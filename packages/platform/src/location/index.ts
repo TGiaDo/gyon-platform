@@ -7,3 +7,5 @@ export * from "./events/location-event-emitter.js";
 export * from "./binding/location-service-binding.js";
 
 export * from "./sensors/index.js";
+
+export * from "./huawei/index.js";
