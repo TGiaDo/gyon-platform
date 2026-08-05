@@ -6,3 +6,5 @@ export * from "./heading.js";
 export * from "./location-fix.js";
 export * from "./speed.js";
 export * from "./timestamp.js";
+export * from "./location-provider.js";
+export * from "./location-event.js";
