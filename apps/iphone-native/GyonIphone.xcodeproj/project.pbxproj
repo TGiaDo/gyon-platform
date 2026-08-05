@@ -54,7 +54,7 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		7B0A94D73023C7AE00E1C4A7 /* GyonIphone 3 */ = {
+		7B0A94D73023C7AE00E1C4A7 /* GyonIphone */ = {
 			isa = PBXGroup;
 			children = (
 				7B0A94CC3023C7AE00E1C4A7 /* Preview Content */,
@@ -69,13 +69,13 @@
 				7B0A94D53023C7AE00E1C4A7 /* RouteProvider.swift */,
 				7B0A94D63023C7AE00E1C4A7 /* VoiceManager.swift */,
 			);
-			path = "GyonIphone 3";
+			path = "GyonIphone";
 			sourceTree = "<group>";
 		};
 		7B94F39A3023B04300CB4A1C = {
 			isa = PBXGroup;
 			children = (
-				7B0A94D73023C7AE00E1C4A7 /* GyonIphone 3 */,
+				7B0A94D73023C7AE00E1C4A7 /* GyonIphone */,
 				7B94F3A43023B04300CB4A1C /* Products */,
 			);
 			sourceTree = "<group>";
