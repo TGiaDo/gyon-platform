@@ -1,3 +1,8 @@
+import type {
+  PlatformServiceToken,
+} from "../services/platform-service-token.js";
+
+
 /**
  * Platform service container.
  *
@@ -17,12 +22,12 @@ export class PlatformContainer {
    * Registers a service instance.
    */
   register<T>(
-    key: string,
+    token: PlatformServiceToken<T>,
     service: T,
   ): void {
 
     this.services.set(
-      key,
+      token.name,
       service,
     );
 
@@ -34,12 +39,12 @@ export class PlatformContainer {
    * Resolves a registered service.
    */
   get<T>(
-    key: string,
+    token: PlatformServiceToken<T>,
   ):
     T | undefined {
 
     return this.services.get(
-      key,
+      token.name,
     ) as T | undefined;
 
   }
@@ -49,12 +54,12 @@ export class PlatformContainer {
   /**
    * Checks service existence.
    */
-  has(
-    key: string,
+  has<T>(
+    token: PlatformServiceToken<T>,
   ): boolean {
 
     return this.services.has(
-      key,
+      token.name,
     );
 
   }

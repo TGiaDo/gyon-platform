@@ -1,16 +1,27 @@
+import {
+  PlatformServiceToken,
+} from "./platform-service-token.js";
+
+
 /**
- * Platform service identifiers.
+ * Platform service tokens.
  */
 export const PlatformServices = {
 
   LOCATION:
-    "location",
+    new PlatformServiceToken(
+      "location",
+    ),
 
   NAVIGATION:
-    "navigation",
+    new PlatformServiceToken(
+      "navigation",
+    ),
 
 } as const;
 
 
 export type PlatformServiceKey =
-  typeof PlatformServices[keyof typeof PlatformServices];
+  typeof PlatformServices[
+    keyof typeof PlatformServices
+  ];
