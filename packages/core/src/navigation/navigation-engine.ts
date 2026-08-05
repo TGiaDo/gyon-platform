@@ -49,7 +49,7 @@ export class NavigationEngine {
 
 
     const provider =
-      RouteProviderRegistry.find(
+      RouteProviderRegistry.findBest(
         query,
       );
 
