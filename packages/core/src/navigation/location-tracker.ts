@@ -14,6 +14,11 @@ export class LocationTracker {
 
   private unsubscribe: (() => void) | undefined;
 
+  private listeners =
+    new Set<
+      (location: LocationFix) => void
+    >();
+
   constructor(
     private readonly locationService: LocationService,
   ) {}
@@ -30,9 +35,34 @@ export class LocationTracker {
             location
           ) {
             this.currentLocation = location;
+
+            for (const listener of this.listeners) {
+              listener(location);
+            }
           }
         },
       );
+  }
+
+
+  /**
+   * Subscribes to location updates.
+   */
+  onUpdate(
+    listener: (
+      location: LocationFix,
+    ) => void,
+  ): () => void {
+
+    this.listeners.add(
+      listener,
+    );
+
+    return () => {
+      this.listeners.delete(
+        listener,
+      );
+    };
   }
 
   /**
