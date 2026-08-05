@@ -10,3 +10,4 @@ export * from "./navigation-runtime.js";
 export * from "./navigation-platform-runtime.js";
 export * from "./navigation-runtime-auto-updater.js";
 export * from "./output/navigation-output-pipeline.js";
+export * from "./navigation-session-controller.js";
