@@ -1,0 +1,16 @@
+{
+  "name": "@gyon/demo",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "start": "tsx src/navigation-demo.ts"
+  },
+  "dependencies": {
+    "@gyon/core": "workspace:*",
+    "@gyon/platform": "workspace:*",
+    "@gyon/contracts": "workspace:*"
+  },
+  "devDependencies": {
+    "tsx": "^4.23.6"
+  }
+}

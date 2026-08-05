@@ -1,7 +1,7 @@
 import type {
   LocationEvent,
   LocationFix,
-  LocationProvider,
+  LocationAdapter,
 } from "@gyon/contracts";
 
 /**
@@ -15,7 +15,7 @@ export class LocationService {
   >();
 
   constructor(
-    private readonly provider: LocationProvider,
+    private readonly provider: LocationAdapter,
   ) {}
 
   /**
@@ -66,7 +66,7 @@ export class LocationService {
    * Gets current known location.
    */
   getCurrentLocation(): LocationFix | null {
-    return this.currentLocation;
+    return this.provider.getCurrentLocation();
   }
 
   /**

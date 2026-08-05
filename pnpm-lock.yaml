@@ -26,6 +26,22 @@ importers:
         specifier: workspace:*
         version: link:../contracts
 
+  packages/demo:
+    dependencies:
+      '@gyon/contracts':
+        specifier: workspace:*
+        version: link:../contracts
+      '@gyon/core':
+        specifier: workspace:*
+        version: link:../core
+      '@gyon/platform':
+        specifier: workspace:*
+        version: link:../platform
+    devDependencies:
+      tsx:
+        specifier: ^4.23.6
+        version: 4.23.6
+
   packages/platform:
     dependencies:
       '@gyon/contracts':
