@@ -15,7 +15,9 @@ test(
 
     RouteProviderRegistry.register({
 
-      async calculate() {
+      async calculate(
+        request,
+      ) {
 
         return route;
 
@@ -29,10 +31,10 @@ test(
 
 
     const result =
-      await engine.calculateRoute(
-        {} as never,
-        {} as never,
-      );
+      await engine.calculateRoute({
+        origin: {} as never,
+        destination: {} as never,
+      });
 
 
     assert.equal(

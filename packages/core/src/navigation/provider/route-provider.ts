@@ -1,7 +1,10 @@
 import type {
   Route,
-  Coordinate,
 } from "@gyon/contracts";
+
+import type {
+  RouteRequest,
+} from "../model/index.js";
 
 
 /**
@@ -20,8 +23,7 @@ export interface RouteProvider {
    * Calculates a route.
    */
   calculate(
-    origin: Coordinate,
-    destination: Coordinate,
+    request: RouteRequest,
   ): Promise<Route>;
 
 }

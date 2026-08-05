@@ -15,3 +15,5 @@ export * from "./watch-navigation-runtime.js";
 
 export * from "./provider/index.js";
 
+
+export * from "./model/index.js";

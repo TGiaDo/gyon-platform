@@ -1,7 +1,10 @@
 import type {
-  Coordinate,
   Route,
 } from "@gyon/contracts";
+
+import type {
+  RouteRequest,
+} from "./model/index.js";
 
 import {
   RouteProviderRegistry,
@@ -26,15 +29,13 @@ export class NavigationEngine {
    * the registered provider.
    */
   async calculateRoute(
-    origin: Coordinate,
-    destination: Coordinate,
+    request: RouteRequest,
   ): Promise<Route> {
 
     return RouteProviderRegistry
       .get()
       .calculate(
-        origin,
-        destination,
+        request,
       );
 
   }
