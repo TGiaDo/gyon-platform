@@ -36,6 +36,11 @@ test(
           origin: {} as never,
           destination: {} as never,
         },
+
+        options: {
+          mode: "walking",
+          offline: true,
+        },
       });
 
 
