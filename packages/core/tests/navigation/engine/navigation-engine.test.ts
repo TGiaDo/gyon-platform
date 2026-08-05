@@ -16,8 +16,23 @@ test(
     RouteProviderRegistry.register({
 
       metadata: {
+
         id: "test",
+
         name: "Test Provider",
+
+        capabilities: {
+
+          offline: true,
+
+          traffic: false,
+
+          modes: [
+            "walking",
+          ],
+
+        },
+
       },
 
 

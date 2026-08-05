@@ -1,3 +1,8 @@
+import type {
+  RouteProviderCapabilities,
+} from "./route-provider-capabilities.js";
+
+
 /**
  * Route provider metadata.
  */
@@ -15,5 +20,12 @@ export interface RouteProviderMetadata {
    */
   name:
     string;
+
+
+  /**
+   * Provider capabilities.
+   */
+  capabilities:
+    RouteProviderCapabilities;
 
 }
