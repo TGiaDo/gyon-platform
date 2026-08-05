@@ -210,3 +210,96 @@ test(
 
   },
 );
+
+
+test(
+  "RouteProviderRegistry selects highest priority provider",
+  () => {
+
+    const lowPriorityProvider = {
+
+      metadata: {
+
+        id: "low",
+
+        name: "Low Priority Provider",
+
+        priority: 10,
+
+        capabilities: {
+
+          offline: true,
+
+          traffic: false,
+
+          modes: [
+            "walking",
+          ],
+
+        },
+
+      },
+
+
+      async calculate() {
+        return {} as never;
+      },
+
+    };
+
+
+    const highPriorityProvider = {
+
+      metadata: {
+
+        id: "high",
+
+        name: "High Priority Provider",
+
+        priority: 100,
+
+        capabilities: {
+
+          offline: true,
+
+          traffic: false,
+
+          modes: [
+            "walking",
+          ],
+
+        },
+
+      },
+
+
+      async calculate() {
+        return {} as never;
+      },
+
+    };
+
+
+    RouteProviderRegistry.register(
+      lowPriorityProvider,
+    );
+
+
+    RouteProviderRegistry.register(
+      highPriorityProvider,
+    );
+
+
+    const result =
+      RouteProviderRegistry.findBest({
+        mode: "walking",
+      });
+
+
+    assert.equal(
+      result,
+      highPriorityProvider,
+    );
+
+  },
+);

@@ -28,4 +28,13 @@ export interface RouteProviderMetadata {
   capabilities:
     RouteProviderCapabilities;
 
+
+  /**
+   * Provider selection priority.
+   *
+   * Higher values are preferred.
+   */
+  priority:
+    number;
+
 }
