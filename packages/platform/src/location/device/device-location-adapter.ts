@@ -3,23 +3,27 @@ import type {
   LocationFix,
 } from "@gyon/contracts";
 
+import {
+  LocationEventEmitter,
+} from "../events/location-event-emitter.js";
+
+
 /**
  * Base adapter for real device location providers.
- *
- * This class will be extended by:
- * - iOS location provider
- * - Android location provider
- * - Huawei Watch provider
  */
 export abstract class DeviceLocationAdapter
   implements LocationAdapter {
 
-  protected current: LocationFix | null = null;
+
+  protected current:
+    LocationFix | null = null;
 
 
-  /**
-   * Returns latest device location.
-   */
+  protected readonly emitter =
+    new LocationEventEmitter();
+
+
+
   getCurrentLocation():
     LocationFix | null {
 
@@ -27,25 +31,37 @@ export abstract class DeviceLocationAdapter
   }
 
 
-  /**
-   * Starts device location updates.
-   */
-  abstract start(): void;
+
+  subscribe(
+    listener:
+      (
+        location: LocationFix,
+      ) => void,
+  ): () => void {
+
+    return this.emitter.subscribe(
+      listener,
+    );
+  }
 
 
-  /**
-   * Stops device location updates.
-   */
-  abstract stop(): void;
 
-
-  /**
-   * Updates location from native layer.
-   */
   protected updateLocation(
     location: LocationFix,
   ): void {
 
-    this.current = location;
+    this.current =
+      location;
+
+
+    this.emitter.emit(
+      location,
+    );
   }
+
+
+
+  abstract start(): void;
+
+  abstract stop(): void;
 }

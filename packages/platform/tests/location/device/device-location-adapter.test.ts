@@ -52,3 +52,40 @@ test(
     );
   },
 );
+
+
+test(
+  "DeviceLocationAdapter emits location events",
+  () => {
+
+    const adapter =
+      new TestDeviceLocationAdapter();
+
+
+    let received = false;
+
+
+    adapter.subscribe(
+      () => {
+        received = true;
+      },
+    );
+
+
+    adapter.push({
+      coordinate: {
+        latitude: 1,
+        longitude: 2,
+      },
+      timestamp: {
+        unixMilliseconds: 10,
+      },
+    });
+
+
+    assert.equal(
+      received,
+      true,
+    );
+  },
+);
