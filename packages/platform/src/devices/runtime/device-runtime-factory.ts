@@ -2,10 +2,6 @@ import {
   DevicePluginRegistry,
 } from "../plugin/device-plugin-registry.js";
 
-import {
-  HuaweiDevicePlugin,
-} from "../huawei/huawei-device-plugin.js";
-
 import type {
   LocationProviderType,
 } from "../../location/provider/location-provider-factory.js";
@@ -13,7 +9,6 @@ import type {
 import type {
   DeviceRuntime,
 } from "../plugin/device-plugin.js";
-
 
 
 /**
@@ -27,10 +22,10 @@ export type DeviceRuntimeType =
 /**
  * Creates complete device runtime.
  *
- * Entry point for hardware platforms.
+ * Device plugins must be initialized
+ * before calling this factory.
  */
 export class DeviceRuntimeFactory {
-
 
 
   static create(
@@ -42,34 +37,10 @@ export class DeviceRuntimeFactory {
     DeviceRuntime {
 
 
-    DeviceRuntimeFactory.ensurePlugins();
-
-
-
     return DevicePluginRegistry.createRuntime(
       device,
       provider,
     );
-
-  }
-
-
-
-  private static ensurePlugins(): void {
-
-
-    if (
-      !DevicePluginRegistry.get(
-        "huawei-watch",
-      )
-    ) {
-
-
-      DevicePluginRegistry.register(
-        HuaweiDevicePlugin,
-      );
-
-    }
 
   }
 

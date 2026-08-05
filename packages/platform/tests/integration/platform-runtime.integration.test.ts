@@ -3,6 +3,7 @@ import test from "node:test";
 
 import {
   DeviceRuntimeFactory,
+  DevicePlatformBootstrap,
 } from "../../src/index.js";
 
 
@@ -21,6 +22,16 @@ const route = {
     },
   ],
 } as any;
+
+
+
+test.before(
+  () => {
+
+    DevicePlatformBootstrap.initialize();
+
+  },
+);
 
 
 
