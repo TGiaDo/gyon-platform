@@ -375,3 +375,127 @@ test(
 
   },
 );
+
+
+test(
+  "RouteProviderRegistry ignores offline providers",
+  () => {
+
+    const offlineProvider = {
+
+      metadata: {
+
+        id: "offline",
+
+        name: "Offline Provider",
+
+        priority:
+          100,
+
+
+        health: {
+
+          status:
+            "offline",
+
+          latency:
+            0,
+
+        },
+
+
+        capabilities: {
+
+          offline:
+            true,
+
+          traffic:
+            false,
+
+          modes: [
+            "walking",
+          ],
+
+        },
+
+      },
+
+
+      async calculate() {
+        return {} as never;
+      },
+
+    };
+
+
+    const healthyProvider = {
+
+      metadata: {
+
+        id: "healthy",
+
+        name: "Healthy Provider",
+
+        priority:
+          10,
+
+
+        health: {
+
+          status:
+            "healthy",
+
+          latency:
+            50,
+
+        },
+
+
+        capabilities: {
+
+          offline:
+            true,
+
+          traffic:
+            false,
+
+          modes: [
+            "walking",
+          ],
+
+        },
+
+      },
+
+
+      async calculate() {
+        return {} as never;
+      },
+
+    };
+
+
+    RouteProviderRegistry.register(
+      offlineProvider,
+    );
+
+
+    RouteProviderRegistry.register(
+      healthyProvider,
+    );
+
+
+    const result =
+      RouteProviderRegistry.findBest({
+        mode:
+          "walking",
+      });
+
+
+    assert.equal(
+      result,
+      healthyProvider,
+    );
+
+  },
+);

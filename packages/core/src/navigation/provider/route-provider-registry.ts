@@ -167,9 +167,56 @@ export class RouteProviderRegistry {
         },
       )
       .sort(
-        (a, b) =>
-          b.metadata.priority -
-          a.metadata.priority,
+        (a, b) => {
+
+          const healthRank = {
+
+            healthy:
+              3,
+
+            degraded:
+              2,
+
+            offline:
+              1,
+
+          };
+
+
+          const healthCompare =
+            healthRank[b.metadata.health.status] -
+            healthRank[a.metadata.health.status];
+
+
+          if (
+            healthCompare !== 0
+          ) {
+
+            return healthCompare;
+
+          }
+
+
+          const priorityCompare =
+            b.metadata.priority -
+            a.metadata.priority;
+
+
+          if (
+            priorityCompare !== 0
+          ) {
+
+            return priorityCompare;
+
+          }
+
+
+          return (
+            a.metadata.health.latency -
+            b.metadata.health.latency
+          );
+
+        },
       )[0];
 
   }
