@@ -3,4 +3,6 @@ export * from "./coordinate.js";
 export * from "./distance.js";
 export * from "./duration.js";
 export * from "./heading.js";
+export * from "./location-fix.js";
 export * from "./speed.js";
+export * from "./timestamp.js";
