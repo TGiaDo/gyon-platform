@@ -1,4 +1,12 @@
 import {
+  DeviceCapabilityRegistry,
+} from "../capabilities/device-capability-registry.js";
+
+import {
+  HuaweiWatchCapability,
+} from "../huawei/capabilities/huawei-watch-capability.js";
+
+import {
   DevicePluginRegistry,
 } from "../plugin/device-plugin-registry.js";
 
@@ -8,10 +16,11 @@ import {
 
 
 /**
- * Initializes device platform plugins.
+ * Initializes device platform.
  *
- * This is the single entry point
- * for registering supported devices.
+ * Registers:
+ * - device capabilities
+ * - device plugins
  */
 export class DevicePlatformBootstrap {
 
@@ -21,21 +30,44 @@ export class DevicePlatformBootstrap {
 
 
 
-  /**
-   * Registers all device plugins.
-   */
   static initialize(): void {
 
 
-    if (this.initialized) {
+    if (
+      this.initialized
+    ) {
+
       return;
+
     }
 
 
 
-    DevicePluginRegistry.register(
-      HuaweiDevicePlugin,
-    );
+    if (
+      !DeviceCapabilityRegistry.get(
+        "huawei-watch",
+      )
+    ) {
+
+      DeviceCapabilityRegistry.register(
+        HuaweiWatchCapability,
+      );
+
+    }
+
+
+
+    if (
+      !DevicePluginRegistry.get(
+        "huawei-watch",
+      )
+    ) {
+
+      DevicePluginRegistry.register(
+        HuaweiDevicePlugin,
+      );
+
+    }
 
 
 
