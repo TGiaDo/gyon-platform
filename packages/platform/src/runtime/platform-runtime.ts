@@ -7,6 +7,10 @@ import {
 } from "../container/platform-container.js";
 
 import {
+  LifecycleRegistry,
+} from "../lifecycle/index.js";
+
+import {
   LocationRuntimeFactory,
 } from "../location/provider/location-runtime-factory.js";
 
@@ -40,6 +44,10 @@ export class PlatformRuntime {
     new PlatformContainer();
 
 
+  private static lifecycleRegistry =
+    new LifecycleRegistry();
+
+
 
   /**
    * Initializes Gyon platform.
@@ -71,6 +79,11 @@ export class PlatformRuntime {
 
     PlatformRuntime.container.register(
       PlatformServices.LOCATION,
+      locationService,
+    );
+
+
+    PlatformRuntime.lifecycleRegistry.register(
       locationService,
     );
 
@@ -114,6 +127,60 @@ export class PlatformRuntime {
   static isInitialized(): boolean {
 
     return PlatformRuntime.initialized;
+
+  }
+
+
+
+  /**
+   * Starts platform services.
+   */
+  static start(): void {
+
+    for (
+      const service of
+      PlatformRuntime.lifecycleRegistry.getAll()
+    ) {
+
+      service.start();
+
+    }
+
+  }
+
+
+
+  /**
+   * Stops platform services.
+   */
+  static stop(): void {
+
+    for (
+      const service of
+      PlatformRuntime.lifecycleRegistry.getAll()
+    ) {
+
+      service.stop();
+
+    }
+
+  }
+
+
+
+  /**
+   * Disposes platform runtime.
+   */
+  static dispose(): void {
+
+    PlatformRuntime.stop();
+
+    PlatformRuntime.lifecycleRegistry.clear();
+
+    PlatformRuntime.container.clear();
+
+    PlatformRuntime.initialized =
+      false;
 
   }
 

@@ -89,6 +89,25 @@ test(
 
 
 test(
+  "PlatformRuntime dispose resets runtime",
+  () => {
+
+    PlatformRuntime.initialize();
+
+    PlatformRuntime.dispose();
+
+    assert.equal(
+      PlatformRuntime.isInitialized(),
+      false,
+    );
+
+  },
+);
+
+
+
+
+test(
   "PlatformRuntime initialization is idempotent",
   () => {
 

@@ -3,6 +3,10 @@ import type {
   LocationFix,
 } from "@gyon/contracts";
 
+import type {
+  Lifecycle,
+} from "../../lifecycle/index.js";
+
 
 /**
  * Runtime controller for location subsystem.
@@ -10,7 +14,7 @@ import type {
  * Owns location lifecycle and provides
  * unified access to current location.
  */
-export class LocationRuntime {
+export class LocationRuntime implements Lifecycle {
 
 
   constructor(
