@@ -499,3 +499,133 @@ test(
 
   },
 );
+
+
+test(
+  "RouteProviderRegistry returns providers ordered by selection priority",
+  () => {
+
+    const lowProvider = {
+
+      metadata: {
+
+        id:
+          "low",
+
+        name:
+          "Low Provider",
+
+        priority:
+          10,
+
+        health: {
+
+          status:
+            "healthy",
+
+          latency:
+            100,
+
+        },
+
+        capabilities: {
+
+          offline:
+            true,
+
+          traffic:
+            false,
+
+          modes: [
+            "walking",
+          ],
+
+        },
+
+      },
+
+
+      async calculate() {
+        return {} as never;
+      },
+
+    };
+
+
+    const highProvider = {
+
+      metadata: {
+
+        id:
+          "high",
+
+        name:
+          "High Provider",
+
+        priority:
+          100,
+
+        health: {
+
+          status:
+            "healthy",
+
+          latency:
+            50,
+
+        },
+
+        capabilities: {
+
+          offline:
+            true,
+
+          traffic:
+            false,
+
+          modes: [
+            "walking",
+          ],
+
+        },
+
+      },
+
+
+      async calculate() {
+        return {} as never;
+      },
+
+    };
+
+
+    RouteProviderRegistry.register(
+      lowProvider,
+    );
+
+
+    RouteProviderRegistry.register(
+      highProvider,
+    );
+
+
+    const result =
+      RouteProviderRegistry.findAll({
+        mode:
+          "walking",
+      });
+
+
+    assert.equal(
+      result[0],
+      highProvider,
+    );
+
+
+    assert.equal(
+      result[1],
+      lowProvider,
+    );
+
+  },
+);
