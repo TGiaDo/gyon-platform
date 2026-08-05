@@ -18,6 +18,10 @@ import {
   PlatformServices,
 } from "../services/platform-services.js";
 
+import type {
+  PlatformRuntimeOptions,
+} from "./options/platform-runtime-options.js";
+
 
 
 /**
@@ -40,7 +44,9 @@ export class PlatformRuntime {
   /**
    * Initializes Gyon platform.
    */
-  static initialize(): void {
+  static initialize(
+    options: PlatformRuntimeOptions = {},
+  ): void {
 
 
     if (
@@ -58,7 +64,8 @@ export class PlatformRuntime {
 
     const locationService =
       LocationRuntimeFactory.create(
-        "simulator",
+        options.provider ??
+          "simulator",
       );
 
 
@@ -70,7 +77,8 @@ export class PlatformRuntime {
 
     const navigationRuntime =
       DeviceNavigationRuntimeFactory.create(
-        "simulator",
+        options.provider ??
+          "simulator",
       );
 
 

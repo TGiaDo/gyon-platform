@@ -6,6 +6,10 @@ import {
   PlatformServices,
 } from "../services/platform-services.js";
 
+import type {
+  PlatformRuntimeOptions,
+} from "../runtime/options/platform-runtime-options.js";
+
 
 import type {
   LocationService,
@@ -13,8 +17,8 @@ import type {
 
 
 import type {
-  NavigationRuntime,
-} from "@gyon/core";
+  DeviceNavigationRuntime,
+} from "../navigation/device-navigation-runtime.js";
 
 
 /**
@@ -35,11 +39,15 @@ export class GyonPlatform {
   /**
    * Initializes and returns platform API.
    */
-  static initialize():
+  static initialize(
+    options: PlatformRuntimeOptions = {},
+  ):
     GyonPlatform {
 
 
-    PlatformRuntime.initialize();
+    PlatformRuntime.initialize(
+      options,
+    );
 
 
     return new GyonPlatform();
@@ -82,13 +90,13 @@ export class GyonPlatform {
    * Navigation runtime facade.
    */
   get navigation():
-    NavigationRuntime {
+    DeviceNavigationRuntime {
 
 
     const runtime =
       PlatformRuntime
         .getContainer()
-        .get<NavigationRuntime>(
+        .get<DeviceNavigationRuntime>(
           PlatformServices.NAVIGATION,
         );
 
