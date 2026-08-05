@@ -6,3 +6,4 @@ export * from "./navigation-progress-controller.js";
 export * from "./instruction-engine.js";
 export * from "./navigation-guidance-service.js";
 export * from "./navigation-event-stream.js";
+export * from "./navigation-runtime.js";
