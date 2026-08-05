@@ -12,3 +12,5 @@ export * from "./navigation-runtime-auto-updater.js";
 export * from "./output/navigation-output-pipeline.js";
 export * from "./navigation-session-controller.js";
 export * from "./watch-navigation-runtime.js";
+
+export * from "./provider/index.js";
