@@ -1,0 +1,21 @@
+{
+  "name": "@gyon/iphone",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "tsx --test"
+  },
+  "dependencies": {
+    "@gyon/contracts": "workspace:*",
+    "@gyon/core": "workspace:*",
+    "@gyon/platform": "workspace:*"
+  },
+  "devDependencies": {
+    "tsx": "^4.23.6"
+  }
+}

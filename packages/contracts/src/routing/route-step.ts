@@ -31,4 +31,9 @@ export interface RouteStep {
    * Coordinate where this step ends.
    */
   readonly end: Coordinate;
+
+  /**
+   * Street name for the navigation step.
+   */
+  readonly street?: string;
 }

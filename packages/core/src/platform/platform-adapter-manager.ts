@@ -2,6 +2,8 @@ import type {
   DisplayAdapter,
   LocationAdapter,
   HapticAdapter,
+  NotificationAdapter,
+  VoiceAdapter,
 } from "@gyon/contracts";
 
 
@@ -14,6 +16,8 @@ export class PlatformAdapterManager {
     private readonly display: DisplayAdapter,
     private readonly location: LocationAdapter,
     private readonly haptic: HapticAdapter,
+    private readonly notification?: NotificationAdapter,
+    private readonly voice?: VoiceAdapter,
   ) {}
 
 
@@ -44,5 +48,25 @@ export class PlatformAdapterManager {
     HapticAdapter {
 
     return this.haptic;
+  }
+
+
+  /**
+   * Returns notification adapter or undefined if not provided.
+   */
+  getNotification():
+    NotificationAdapter | undefined {
+
+    return this.notification;
+  }
+
+
+  /**
+   * Returns voice adapter or undefined if not provided.
+   */
+  getVoice():
+    VoiceAdapter | undefined {
+
+    return this.voice;
   }
 }

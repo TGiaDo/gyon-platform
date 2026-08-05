@@ -1,0 +1,339 @@
+// !$*UTF8*$!
+{
+  archiveVersion = 1;
+  classes = {};
+  objectVersion = 55;
+  objects = {
+    1D6058900D05DD3D006BFB54 /* Project object */ = {
+      isa = PBXProject;
+      attributes = {
+        LastUpgradeCheck = 1510;
+        ORGANIZATIONNAME = Gyon;
+        TargetAttributes = {
+          1D6058920D05DD3D006BFB54 = {
+            CreatedOnToolsVersion = 15.0;
+          };
+        };
+      };
+      buildConfigurationList = 1D6058910D05DD3D006BFB54 /* Build configuration list for PBXProject "GyonIphone" */;
+      compatibilityVersion = "Xcode 14.0";
+      developmentRegion = en;
+      hasScannedForEncodings = 0;
+      knownRegions = ( en, Base );
+      mainGroup = 1D60588D0D05DD3D006BFB54;
+      productRefGroup = 1D60588E0D05DD3D006BFB54;
+      projectDirPath = "";
+      projectRoot = "";
+      targets = (1D6058920D05DD3D006BFB54 /* GyonIphone */);
+    };
+    1D60588D0D05DD3D006BFB54 /* Main Group */ = {
+      isa = PBXGroup;
+      children = (
+        1D6058930D05DD3D006BFB54 /* GyonIphoneApp.swift */,
+        1D6058940D05DD3D006BFB54 /* ContentView.swift */,
+        1D6058950D05DD3D006BFB54 /* LocationManager.swift */,
+        1D6058960D05DD3D006BFB54 /* BluetoothManager.swift */,
+        1D6058970D05DD3D006BFB54 /* RouteProvider.swift */,
+        1D6058980D05DD3D006BFB54 /* NavigationModel.swift */,
+        1D6058990D05DD3D006BFB54 /* NavigationEngine.swift */,
+        2A2A2A2A2A2A2A2A2A2A2A2A2A /* LaunchScreen.storyboard */,
+        3B3B3B3B3B3B3B3B3B3B3B3B3B /* Assets.xcassets */,
+        1D60589A0D05DD3D006BFB54 /* JSNavigationEngine.js */,
+        1D60589B0D05DD3D006BFB54 /* Info.plist */,
+        4C4C4C4C4C4C4C4C4C4C4C4C4C /* GyonIphone.entitlements */,
+      );
+      sourceTree = "<group>";
+    };
+    1D60588E0D05DD3D006BFB54 /* Products */ = {
+      isa = PBXGroup;
+      children = (
+        1D6058920D05DD3D006BFB54 /* GyonIphone.app */,
+      );
+      sourceTree = "<group>";
+    };
+    1D6058920D05DD3D006BFB54 /* GyonIphone */ = {
+      isa = PBXNativeTarget;
+      buildConfigurationList = 1D6058A10D05DD3D006BFB54 /* Build configuration list for PBXNativeTarget "GyonIphone" */;
+      buildPhases = (
+        1D60589C0D05DD3D006BFB54 /* Sources */,
+        1D60589D0D05DD3D006BFB54 /* Frameworks */,
+        1D60589E0D05DD3D006BFB54 /* Resources */,
+      );
+      buildRules = ();
+      dependencies = ();
+      name = "GyonIphone";
+      productName = "GyonIphone";
+      productReference = 1D6058920D05DD3D006BFB54 /* GyonIphone.app */;
+      productType = "com.apple.product-type.application";
+    };
+    1D60589C0D05DD3D006BFB54 /* Sources */ = {
+      isa = PBXSourcesBuildPhase;
+      buildActionMask = 2147483647;
+      files = (
+        1D6058A20D05DD3D006BFB54 /* GyonIphoneApp.swift in Sources */,
+        1D6058A30D05DD3D006BFB54 /* ContentView.swift in Sources */,
+        1D6058A40D05DD3D006BFB54 /* LocationManager.swift in Sources */,
+        1D6058A50D05DD3D006BFB54 /* BluetoothManager.swift in Sources */,
+        1D6058A60D05DD3D006BFB54 /* RouteProvider.swift in Sources */,
+        1D6058A70D05DD3D006BFB54 /* NavigationModel.swift in Sources */,
+        1D6058A80D05DD3D006BFB54 /* NavigationEngine.swift in Sources */,
+      );
+      runOnlyForDeploymentPostprocessing = 0;
+    };
+    1D60589D0D05DD3D006BFB54 /* Frameworks */ = {
+      isa = PBXFrameworksBuildPhase;
+      buildActionMask = 2147483647;
+      files = (
+        1D6058A90D05DD3D006BFB54 /* MapKit.framework in Frameworks */,
+        1D6058AA0D05DD3D006BFB54 /* CoreBluetooth.framework in Frameworks */,
+      );
+      runOnlyForDeploymentPostprocessing = 0;
+    };
+    1D60589E0D05DD3D006BFB54 /* Resources */ = {
+      isa = PBXResourcesBuildPhase;
+      buildActionMask = 2147483647;
+      files = (
+        1D6058AB0D05DD3D006BFB54 /* JSNavigationEngine.js in Resources */,
+        1D6058AC0D05DD3D006BFB54 /* Info.plist in Resources */,
+        B2B2B2B2B2B2B2B2B2B2B2B2B /* Assets.xcassets in Resources */,
+        B1B1B1B1B1B1B1B1B1B1B1B1B /* LaunchScreen.storyboard in Resources */,
+      );
+      runOnlyForDeploymentPostprocessing = 0;
+    };
+    1D6058A10D05DD3D006BFB54 /* Build configuration list for PBXProject "GyonIphone" */ = {
+      isa = XCConfigurationList;
+      buildConfigurations = (
+        1D6058A20D05DD3D006BFB54 /* Debug */,
+        1D6058A30D05DD3D006BFB54 /* Release */,
+      );
+      defaultConfigurationIsVisible = 0;
+      defaultConfigurationName = Release;
+    };
+    1D6058A20D05DD3D006BFB54 /* Debug */ = {
+      isa = XCBuildConfiguration;
+      buildSettings = {
+        DEVELOPMENT_TEAM = "";
+        IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+        PRODUCT_BUNDLE_IDENTIFIER = "com.gyon.iphone";
+        PRODUCT_NAME = "$(TARGET_NAME)";
+        SWIFT_VERSION = 5.8;
+        TARGETED_DEVICE_FAMILY = "1";
+        SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+      };
+      name = Debug;
+    };
+    1D6058A30D05DD3D006BFB54 /* Release */ = {
+      isa = XCBuildConfiguration;
+      buildSettings = {
+        DEVELOPMENT_TEAM = "";
+        IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+        PRODUCT_BUNDLE_IDENTIFIER = "com.gyon.iphone";
+        PRODUCT_NAME = "$(TARGET_NAME)";
+        SWIFT_VERSION = 5.8;
+        TARGETED_DEVICE_FAMILY = "1";
+      };
+      name = Release;
+    };
+    1D6058A40D05DD3D006BFB54 /* Build configuration list for PBXNativeTarget "GyonIphone" */ = {
+      isa = XCConfigurationList;
+      buildConfigurations = (
+        1D6058A50D05DD3D006BFB54 /* Debug */,
+        1D6058A60D05DD3D006BFB54 /* Release */,
+      );
+      defaultConfigurationIsVisible = 0;
+      defaultConfigurationName = Release;
+    };
+    1D6058A50D05DD3D006BFB54 /* Debug */ = {
+      isa = XCBuildConfiguration;
+      buildSettings = {
+        ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+        CODE_SIGN_STYLE = Automatic;
+        DEVELOPMENT_TEAM = "";
+        CODE_SIGN_ENTITLEMENTS = "GyonIphone/GyonIphone.entitlements";
+        IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+        LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+        PRODUCT_BUNDLE_IDENTIFIER = "com.gyon.iphone";
+        PRODUCT_NAME = "$(TARGET_NAME)";
+        PRODUCT_TYPE = "com.apple.product-type.application";
+        SWIFT_VERSION = 5.8;
+        TARGETED_DEVICE_FAMILY = "1";
+      };
+      name = Debug;
+    };
+    1D6058A60D05DD3D006BFB54 /* Release */ = {
+      isa = XCBuildConfiguration;
+      buildSettings = {
+        ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+        CODE_SIGN_STYLE = Automatic;
+        DEVELOPMENT_TEAM = "";
+        CODE_SIGN_ENTITLEMENTS = "GyonIphone/GyonIphone.entitlements";
+        IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+        LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+        PRODUCT_BUNDLE_IDENTIFIER = "com.gyon.iphone";
+        PRODUCT_NAME = "$(TARGET_NAME)";
+        PRODUCT_TYPE = "com.apple.product-type.application";
+        SWIFT_VERSION = 5.8;
+        TARGETED_DEVICE_FAMILY = "1";
+      };
+      name = Release;
+    };
+    1D6058930D05DD3D006BFB54 /* GyonIphoneApp.swift */ = {
+      isa = PBXFileReference;
+      lastKnownFileType = sourcecode.swift;
+      name = GyonIphoneApp.swift;
+      path = GyonIphoneApp.swift;
+      sourceTree = "<group>";
+    };
+    1D6058940D05DD3D006BFB54 /* ContentView.swift */ = {
+      isa = PBXFileReference;
+      lastKnownFileType = sourcecode.swift;
+      name = ContentView.swift;
+      path = ContentView.swift;
+      sourceTree = "<group>";
+    };
+    1D6058950D05DD3D006BFB54 /* LocationManager.swift */ = {
+      isa = PBXFileReference;
+      lastKnownFileType = sourcecode.swift;
+      name = LocationManager.swift;
+      path = LocationManager.swift;
+      sourceTree = "<group>";
+    };
+    1D6058960D05DD3D006BFB54 /* BluetoothManager.swift */ = {
+      isa = PBXFileReference;
+      lastKnownFileType = sourcecode.swift;
+      name = BluetoothManager.swift;
+      path = BluetoothManager.swift;
+      sourceTree = "<group>";
+    };
+    1D6058970D05DD3D006BFB54 /* RouteProvider.swift */ = {
+      isa = PBXFileReference;
+      lastKnownFileType = sourcecode.swift;
+      name = RouteProvider.swift;
+      path = RouteProvider.swift;
+      sourceTree = "<group>";
+    };
+    1D6058980D05DD3D006BFB54 /* NavigationModel.swift */ = {
+      isa = PBXFileReference;
+      lastKnownFileType = sourcecode.swift;
+      name = NavigationModel.swift;
+      path = NavigationModel.swift;
+      sourceTree = "<group>";
+    };
+    1D6058990D05DD3D006BFB54 /* NavigationEngine.swift */ = {
+      isa = PBXFileReference;
+      lastKnownFileType = sourcecode.swift;
+      name = NavigationEngine.swift;
+      path = NavigationEngine.swift;
+      sourceTree = "<group>";
+    };
+    2A2A2A2A2A2A2A2A2A2A2A2A2A /* LaunchScreen.storyboard */ = {
+      isa = PBXFileReference;
+      lastKnownFileType = file.storyboard;
+      name = LaunchScreen.storyboard;
+      path = LaunchScreen.storyboard;
+      sourceTree = "<group>";
+    };
+    3B3B3B3B3B3B3B3B3B3B3B3B3B /* Assets.xcassets */ = {
+      isa = PBXFileReference;
+      lastKnownFileType = folder.assetcatalog;
+      name = Assets.xcassets;
+      path = Assets.xcassets;
+      sourceTree = "<group>";
+    };
+    4C4C4C4C4C4C4C4C4C4C4C4C4C /* GyonIphone.entitlements */ = {
+      isa = PBXFileReference;
+      lastKnownFileType = text.plist.xml;
+      name = GyonIphone.entitlements;
+      path = GyonIphone.entitlements;
+      sourceTree = "<group>";
+    };
+    1D60589A0D05DD3D006BFB54 /* JSNavigationEngine.js */ = {
+      isa = PBXFileReference;
+      lastKnownFileType = text;
+      name = JSNavigationEngine.js;
+      path = JSNavigationEngine.js;
+      sourceTree = "<group>";
+    };
+    1D60589B0D05DD3D006BFB54 /* Info.plist */ = {
+      isa = PBXFileReference;
+      lastKnownFileType = text.plist.xml;
+      name = Info.plist;
+      path = Info.plist;
+      sourceTree = "<group>";
+    };
+    1D6058A20D05DD3D006BFB54 /* GyonIphone.app */ = {
+      isa = PBXFileReference;
+      explicitFileType = application;
+      name = GyonIphone.app;
+      path = GyonIphone.app;
+      sourceTree = BUILT_PRODUCTS_DIR;
+    };
+    1D6058A20D05DD3D006BFB54 /* GyonIphoneApp.swift in Sources */ = {
+      isa = PBXBuildFile;
+      fileRef = 1D6058930D05DD3D006BFB54;
+    };
+    1D6058A30D05DD3D006BFB54 /* ContentView.swift in Sources */ = {
+      isa = PBXBuildFile;
+      fileRef = 1D6058940D05DD3D006BFB54;
+    };
+    1D6058A40D05DD3D006BFB54 /* LocationManager.swift in Sources */ = {
+      isa = PBXBuildFile;
+      fileRef = 1D6058950D05DD3D006BFB54;
+    };
+    1D6058A50D05DD3D006BFB54 /* BluetoothManager.swift in Sources */ = {
+      isa = PBXBuildFile;
+      fileRef = 1D6058960D05DD3D006BFB54;
+    };
+    1D6058A60D05DD3D006BFB54 /* RouteProvider.swift in Sources */ = {
+      isa = PBXBuildFile;
+      fileRef = 1D6058970D05DD3D006BFB54;
+    };
+    1D6058A70D05DD3D006BFB54 /* NavigationModel.swift in Sources */ = {
+      isa = PBXBuildFile;
+      fileRef = 1D6058980D05DD3D006BFB54;
+    };
+    1D6058A80D05DD3D006BFB54 /* NavigationEngine.swift in Sources */ = {
+      isa = PBXBuildFile;
+      fileRef = 1D6058990D05DD3D006BFB54;
+    };
+    1D6058A90D05DD3D006BFB54 /* MapKit.framework in Frameworks */ = {
+      isa = PBXBuildFile;
+      fileRef = 1D6058AC0D05DD3D006BFB54;
+    };
+    1D6058AA0D05DD3D006BFB54 /* CoreBluetooth.framework in Frameworks */ = {
+      isa = PBXBuildFile;
+      fileRef = 1D6058AC10D05DD3D006BFB54;
+    };
+    1D6058AB0D05DD3D006BFB54 /* JSNavigationEngine.js in Resources */ = {
+      isa = PBXBuildFile;
+      fileRef = 1D60589A0D05DD3D006BFB54;
+    };
+    1D6058AC0D05DD3D006BFB54 /* Info.plist in Resources */ = {
+      isa = PBXBuildFile;
+      fileRef = 1D60589B0D05DD3D006BFB54;
+    };
+    B2B2B2B2B2B2B2B2B2B2B2B2B /* Assets.xcassets in Resources */ = {
+      isa = PBXBuildFile;
+      fileRef = 3B3B3B3B3B3B3B3B3B3B3B3B3B;
+    };
+    B1B1B1B1B1B1B1B1B1B1B1B1B /* LaunchScreen.storyboard in Resources */ = {
+      isa = PBXBuildFile;
+      fileRef = 2A2A2A2A2A2A2A2A2A2A2A2A2A;
+    };
+    1D6058AC0D05DD3D006BFB54 /* MapKit.framework */ = {
+      isa = PBXFileReference;
+      lastKnownFileType = wrapper.framework;
+      name = MapKit.framework;
+      path = System/Library/Frameworks/MapKit.framework;
+      sourceTree = SDKROOT;
+    };
+    1D6058AC10D05DD3D006BFB54 /* CoreBluetooth.framework */ = {
+      isa = PBXFileReference;
+      lastKnownFileType = wrapper.framework;
+      name = CoreBluetooth.framework;
+      path = System/Library/Frameworks/CoreBluetooth.framework;
+      sourceTree = SDKROOT;
+    };
+  };
+  rootObject = 1D6058900D05DD3D006BFB54 /* Project object */;
+}

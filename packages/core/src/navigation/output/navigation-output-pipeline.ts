@@ -2,6 +2,8 @@ import type {
   NavigationInstruction,
   DisplayAdapter,
   HapticAdapter,
+  NotificationAdapter,
+  VoiceAdapter,
 } from "@gyon/contracts";
 
 
@@ -17,6 +19,12 @@ export class NavigationOutputPipeline {
 
     private readonly haptic:
       HapticAdapter,
+
+    private readonly notification?:
+      NotificationAdapter,
+
+    private readonly voice?:
+      VoiceAdapter,
   ) {}
 
 
@@ -35,6 +43,34 @@ export class NavigationOutputPipeline {
     this.haptic.vibrate(
       100,
     );
+    
+    if (this.notification) {
+      try {
+        const id = String(Date.now());
+        const title = String(instruction.maneuver || "navigation");
+        const subtitle = instruction.text || "";
+        const body = `${instruction.distance?.meters ?? 0} m`;
+        this.notification.notify({
+          id,
+          title,
+          subtitle,
+          body,
+          data: {
+            distanceMeters: instruction.distance?.meters ?? 0,
+          },
+        });
+      } catch (e) {
+        // best-effort
+      }
+    }
+
+    if (this.voice) {
+      try {
+        this.voice.speak(instruction.text);
+      } catch (e) {
+        // best-effort
+      }
+    }
   }
 
 

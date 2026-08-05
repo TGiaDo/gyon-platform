@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE document PUBLIC "-//Apple//DTD Document 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+  <scenes>
+    <!--Launch Screen-->
+    <scene sceneID="scene-launch">
+      <objects>
+        <viewController id="vc-launch" sceneMemberID="viewController">
+          <view key="view" contentMode="scaleToFill" id="view-launch">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+              <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Gyon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" translatesAutoresizingMaskIntoConstraints="NO" id="label-launch">
+                <rect key="frame" x="20" y="300" width="335" height="40"/>
+                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                <color key="textColor" white="0.0" alpha="1"/>
+              </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1"/>
+            <viewLayoutGuide key="safeArea" id="safe-area-launch"/>
+          </view>
+        </viewController>
+      </objects>
+      <point key="canvasLocation" x="53" y="375"/>
+    </scene>
+  </scenes>
+</document>

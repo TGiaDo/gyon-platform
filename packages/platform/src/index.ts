@@ -4,6 +4,9 @@ export * from "./navigation/index.js";
 
 export * from "./devices/index.js";
 
+export * from "./bridge/index.js";
+export * from "./simulator/index.js";
+
 export * from "./runtime/index.js";
 
 export * from "./container/index.js";
