@@ -30,6 +30,18 @@ test(
 
         name: "Test Provider",
 
+
+        health: {
+
+          status:
+            "healthy",
+
+          latency:
+            50,
+
+        },
+
+
         capabilities: {
 
           offline: true,
@@ -114,6 +126,18 @@ test(
 
         priority: 10,
 
+
+        health: {
+
+          status:
+            "healthy",
+
+          latency:
+            50,
+
+        },
+
+
         capabilities: {
 
           offline: true,
@@ -147,6 +171,18 @@ test(
         name: "High Provider",
 
         priority: 100,
+
+
+        health: {
+
+          status:
+            "healthy",
+
+          latency:
+            50,
+
+        },
+
 
         capabilities: {
 

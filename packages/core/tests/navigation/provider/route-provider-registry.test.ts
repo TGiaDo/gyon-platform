@@ -27,6 +27,18 @@ test(
 
         name: "Test Provider",
 
+
+        health: {
+
+          status:
+            "healthy",
+
+          latency:
+            50,
+
+        },
+
+
         capabilities: {
 
           offline: true,
@@ -79,6 +91,18 @@ test(
         id: "offline",
 
         name: "Offline Provider",
+
+
+        health: {
+
+          status:
+            "healthy",
+
+          latency:
+            50,
+
+        },
+
 
         capabilities: {
 
@@ -135,6 +159,18 @@ test(
 
         name: "Offline Provider",
 
+
+        health: {
+
+          status:
+            "healthy",
+
+          latency:
+            50,
+
+        },
+
+
         capabilities: {
 
           offline: true,
@@ -164,6 +200,18 @@ test(
         id: "driving",
 
         name: "Driving Provider",
+
+
+        health: {
+
+          status:
+            "healthy",
+
+          latency:
+            50,
+
+        },
+
 
         capabilities: {
 
@@ -226,6 +274,18 @@ test(
 
         priority: 10,
 
+
+        health: {
+
+          status:
+            "healthy",
+
+          latency:
+            50,
+
+        },
+
+
         capabilities: {
 
           offline: true,
@@ -257,6 +317,18 @@ test(
         name: "High Priority Provider",
 
         priority: 100,
+
+
+        health: {
+
+          status:
+            "healthy",
+
+          latency:
+            50,
+
+        },
+
 
         capabilities: {
 

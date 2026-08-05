@@ -2,6 +2,10 @@ import type {
   RouteProviderCapabilities,
 } from "./route-provider-capabilities.js";
 
+import type {
+  RouteProviderHealth,
+} from "./route-provider-health.js";
+
 
 /**
  * Route provider metadata.
@@ -36,5 +40,12 @@ export interface RouteProviderMetadata {
    */
   priority:
     number;
+
+
+  /**
+   * Runtime health.
+   */
+  health:
+    RouteProviderHealth;
 
 }
