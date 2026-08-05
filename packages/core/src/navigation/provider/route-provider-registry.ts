@@ -6,6 +6,14 @@ import type {
   RouteProviderQuery,
 } from "./model/index.js";
 
+import {
+  RouteProviderRuntime,
+} from "./runtime/index.js";
+
+import {
+  ProviderHealthMonitor,
+} from "./health/index.js";
+
 
 /**
  * Global route provider registry.
@@ -14,6 +22,14 @@ export class RouteProviderRegistry {
 
   private static providers:
     RouteProvider[] = [];
+
+
+  private static runtimes:
+    RouteProviderRuntime[] = [];
+
+
+  private static healthMonitor =
+    new ProviderHealthMonitor();
 
 
   /**
@@ -25,6 +41,19 @@ export class RouteProviderRegistry {
 
     RouteProviderRegistry.providers.push(
       provider,
+    );
+
+
+    RouteProviderRegistry.healthMonitor.register(
+      provider.metadata.id,
+    );
+
+
+    RouteProviderRegistry.runtimes.push(
+      new RouteProviderRuntime(
+        provider,
+        RouteProviderRegistry.healthMonitor,
+      ),
     );
 
   }
@@ -326,6 +355,40 @@ export class RouteProviderRegistry {
           );
 
         },
+      );
+
+  }
+
+
+
+
+  /**
+   * Finds highest priority runtime provider matching requirements.
+   */
+  static findBestRuntime(
+    query: RouteProviderQuery,
+  ):
+    RouteProviderRuntime | undefined {
+
+    const provider =
+      RouteProviderRegistry.findBest(
+        query,
+      );
+
+
+    if (
+      !provider
+    ) {
+
+      return undefined;
+
+    }
+
+
+    return RouteProviderRegistry.runtimes
+      .find(
+        (runtime) =>
+          runtime.getProvider() === provider,
       );
 
   }

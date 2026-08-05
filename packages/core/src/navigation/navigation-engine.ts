@@ -48,14 +48,14 @@ export class NavigationEngine {
     };
 
 
-    const provider =
-      RouteProviderRegistry.findBest(
+    const runtime =
+      RouteProviderRegistry.findBestRuntime(
         query,
       );
 
 
     if (
-      !provider
+      !runtime
     ) {
 
       throw new Error(
@@ -65,7 +65,7 @@ export class NavigationEngine {
     }
 
 
-    return provider.calculate(
+    return runtime.calculate(
       context,
     );
 
