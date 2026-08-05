@@ -57,7 +57,7 @@ final class MapKitRouteProvider {
           id: UUID().uuidString,
           maneuver: step.instructions.isEmpty ? "continue" : step.instructions,
           distance: step.distance,
-          duration: step.expectedTravelTime,
+          duration: route.expectedTravelTime * (step.distance / route.distance),
           latitude: coord.latitude,
           longitude: coord.longitude,
           street: street
