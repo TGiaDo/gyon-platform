@@ -20,7 +20,44 @@ export class NavigationSession {
    * Starts navigation.
    */
   start(): void {
+    if (this.state !== "idle") {
+      throw new Error("Navigation session already started");
+    }
+
     this.state = "started";
+  }
+
+  /**
+   * Activates active navigation.
+   */
+  activate(): void {
+    if (this.state !== "started") {
+      throw new Error(
+        "Navigation session must be started first",
+      );
+    }
+
+    this.state = "navigating";
+  }
+
+  /**
+   * Marks navigation as completed.
+   */
+  complete(): void {
+    if (this.state !== "navigating") {
+      throw new Error(
+        "Navigation session is not navigating",
+      );
+    }
+
+    this.state = "arrived";
+  }
+
+  /**
+   * Cancels navigation.
+   */
+  cancel(): void {
+    this.state = "cancelled";
   }
 
   /**
