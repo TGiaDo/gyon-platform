@@ -24,6 +24,10 @@ import {
   PositionMatcher,
 } from "./position-matcher.js";
 
+import {
+  NavigationOutputPipeline,
+} from "./output/navigation-output-pipeline.js";
+
 
 /**
  * High-level navigation runtime facade.
@@ -40,6 +44,7 @@ export class NavigationRuntime {
   constructor(
     private readonly tracker: LocationTracker,
     private readonly matcher: PositionMatcher,
+    private readonly output?: NavigationOutputPipeline,
   ) {}
 
 
@@ -81,7 +86,21 @@ export class NavigationRuntime {
       );
     }
 
-    return this.guidance.update();
+    const instruction =
+      this.guidance.update();
+
+
+    if (
+      instruction &&
+      this.output
+    ) {
+      this.output.send(
+        instruction,
+      );
+    }
+
+
+    return instruction;
   }
 
 
