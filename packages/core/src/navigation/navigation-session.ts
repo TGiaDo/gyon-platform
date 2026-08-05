@@ -120,6 +120,24 @@ export class NavigationSession {
   }
 
   /**
+   * Updates current step by identifier.
+   */
+  updateStep(stepId: string): void {
+    const steps =
+      this.route.legs[0]?.steps ?? [];
+
+    const index =
+      steps.findIndex(
+        (step) => step.id === stepId,
+      );
+
+    if (index >= 0) {
+      this.currentStepIndex = index;
+    }
+  }
+
+
+  /**
    * Returns current progress.
    */
   getProgress(): NavigationProgress {
