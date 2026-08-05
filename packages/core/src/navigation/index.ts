@@ -4,3 +4,4 @@ export * from "./location-tracker.js";
 export * from "./position-matcher.js";
 export * from "./navigation-progress-controller.js";
 export * from "./instruction-engine.js";
+export * from "./navigation-guidance-service.js";
