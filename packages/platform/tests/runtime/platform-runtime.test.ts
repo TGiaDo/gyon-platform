@@ -3,6 +3,7 @@ import test from "node:test";
 
 import {
   PlatformRuntime,
+  PlatformServices,
 } from "../../src/index.js";
 
 
@@ -69,6 +70,41 @@ test(
     assert.equal(
       PlatformRuntime.isInitialized(),
       true,
+    );
+
+  },
+);
+
+
+test(
+  "PlatformRuntime registers location service",
+  () => {
+
+    PlatformRuntime.reset();
+
+    PlatformRuntime.initialize();
+
+
+    const container =
+      PlatformRuntime.getContainer();
+
+
+    assert.equal(
+      container.has(
+        PlatformServices.LOCATION,
+      ),
+      true,
+    );
+
+
+    const locationService =
+      container.get(
+        PlatformServices.LOCATION,
+      );
+
+
+    assert.ok(
+      locationService,
     );
 
   },

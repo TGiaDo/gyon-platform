@@ -6,6 +6,14 @@ import {
   PlatformContainer,
 } from "../container/platform-container.js";
 
+import {
+  LocationRuntimeFactory,
+} from "../location/provider/location-runtime-factory.js";
+
+import {
+  PlatformServices,
+} from "../services/platform-services.js";
+
 
 
 /**
@@ -42,6 +50,18 @@ export class PlatformRuntime {
 
 
     DevicePlatformBootstrap.initialize();
+
+
+    const locationService =
+      LocationRuntimeFactory.create(
+        "simulator",
+      );
+
+
+    PlatformRuntime.container.register(
+      PlatformServices.LOCATION,
+      locationService,
+    );
 
 
 
