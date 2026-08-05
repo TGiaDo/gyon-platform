@@ -3,7 +3,7 @@ import type {
 } from "@gyon/contracts";
 
 import type {
-  RouteRequest,
+  RoutePlanningContext,
 } from "./model/index.js";
 
 import {
@@ -29,13 +29,13 @@ export class NavigationEngine {
    * the registered provider.
    */
   async calculateRoute(
-    request: RouteRequest,
+    context: RoutePlanningContext,
   ): Promise<Route> {
 
     return RouteProviderRegistry
       .get()
       .calculate(
-        request,
+        context.request,
       );
 
   }

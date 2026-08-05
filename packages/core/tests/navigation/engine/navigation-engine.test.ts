@@ -32,8 +32,10 @@ test(
 
     const result =
       await engine.calculateRoute({
-        origin: {} as never,
-        destination: {} as never,
+        request: {
+          origin: {} as never,
+          destination: {} as never,
+        },
       });
 
 
