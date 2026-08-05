@@ -10,7 +10,8 @@
     "test": "tsx --test"
   },
   "dependencies": {
-    "@gyon/contracts": "workspace:*"
+    "@gyon/contracts": "workspace:*",
+    "@gyon/core": "workspace:*"
   },
   "devDependencies": {
     "tsx": "^4.23.6"
