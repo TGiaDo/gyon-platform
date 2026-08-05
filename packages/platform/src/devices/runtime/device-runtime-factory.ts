@@ -1,18 +1,18 @@
 import {
-  HuaweiDeviceRuntime,
-} from "../huawei/runtime/huawei-device-runtime.js";
+  DevicePluginRegistry,
+} from "../plugin/device-plugin-registry.js";
 
 import {
-  DeviceCapabilityRegistry,
-} from "../capabilities/device-capability-registry.js";
-
-import {
-  HuaweiWatchCapability,
-} from "../huawei/capabilities/huawei-watch-capability.js";
+  HuaweiDevicePlugin,
+} from "../huawei/huawei-device-plugin.js";
 
 import type {
   LocationProviderType,
 } from "../../location/provider/location-provider-factory.js";
+
+import type {
+  DeviceRuntime,
+} from "../plugin/device-plugin.js";
 
 
 
@@ -38,61 +38,35 @@ export class DeviceRuntimeFactory {
 
     provider:
       LocationProviderType,
-  ): HuaweiDeviceRuntime {
+  ):
+    DeviceRuntime {
 
 
-    DeviceRuntimeFactory.ensureRegistered();
-
-
-
-    const capability =
-      DeviceCapabilityRegistry.get(
-        device,
-      );
-
-
-    if (!capability) {
-
-      throw new Error(
-        `Unsupported device runtime: ${device}`,
-      );
-
-    }
+    DeviceRuntimeFactory.ensurePlugins();
 
 
 
-    switch (device) {
-
-
-      case "huawei-watch":
-
-        return new HuaweiDeviceRuntime(
-          provider,
-        );
-
-
-      default:
-
-        throw new Error(
-          `Unsupported device runtime: ${device}`,
-        );
-
-    }
+    return DevicePluginRegistry.createRuntime(
+      device,
+      provider,
+    );
 
   }
 
 
 
-  private static ensureRegistered(): void {
+  private static ensurePlugins(): void {
+
 
     if (
-      !DeviceCapabilityRegistry.has(
+      !DevicePluginRegistry.get(
         "huawei-watch",
       )
     ) {
 
-      DeviceCapabilityRegistry.register(
-        HuaweiWatchCapability,
+
+      DevicePluginRegistry.register(
+        HuaweiDevicePlugin,
       );
 
     }
