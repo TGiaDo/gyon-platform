@@ -1,4 +1,11 @@
-import type { Route } from "@gyon/contracts";
+import type {
+  Coordinate,
+  Route,
+} from "@gyon/contracts";
+
+import {
+  RouteProviderRegistry,
+} from "./provider/index.js";
 
 import { NavigationSession } from "./navigation-session.js";
 
@@ -11,5 +18,24 @@ export class NavigationEngine {
    */
   createSession(route: Route): NavigationSession {
     return new NavigationSession(route);
+  }
+
+
+  /**
+   * Calculates a route using
+   * the registered provider.
+   */
+  async calculateRoute(
+    origin: Coordinate,
+    destination: Coordinate,
+  ): Promise<Route> {
+
+    return RouteProviderRegistry
+      .get()
+      .calculate(
+        origin,
+        destination,
+      );
+
   }
 }
