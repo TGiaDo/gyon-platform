@@ -32,11 +32,42 @@ export class NavigationEngine {
     context: RoutePlanningContext,
   ): Promise<Route> {
 
-    return RouteProviderRegistry
-      .get()
-      .calculate(
-        context,
+    const query = {
+
+      ...(context.options?.offline !== undefined && {
+        offline:
+          context.options.offline,
+      }),
+
+
+      ...(context.options?.mode !== undefined && {
+        mode:
+          context.options.mode,
+      }),
+
+    };
+
+
+    const provider =
+      RouteProviderRegistry.find(
+        query,
       );
+
+
+    if (
+      !provider
+    ) {
+
+      throw new Error(
+        "No route provider matches requirements",
+      );
+
+    }
+
+
+    return provider.calculate(
+      context,
+    );
 
   }
 }
