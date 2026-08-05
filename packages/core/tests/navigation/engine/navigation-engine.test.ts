@@ -16,8 +16,20 @@ test(
     RouteProviderRegistry.register({
 
       async calculate(
-        request,
+        context,
       ) {
+
+        assert.equal(
+          context.options?.mode,
+          "walking",
+        );
+
+
+        assert.equal(
+          context.options?.offline,
+          true,
+        );
+
 
         return route;
 

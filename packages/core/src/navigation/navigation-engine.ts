@@ -35,7 +35,7 @@ export class NavigationEngine {
     return RouteProviderRegistry
       .get()
       .calculate(
-        context.request,
+        context,
       );
 
   }

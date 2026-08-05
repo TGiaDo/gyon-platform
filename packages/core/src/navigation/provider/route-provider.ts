@@ -3,7 +3,7 @@ import type {
 } from "@gyon/contracts";
 
 import type {
-  RouteRequest,
+  RoutePlanningContext,
 } from "../model/index.js";
 
 
@@ -23,7 +23,7 @@ export interface RouteProvider {
    * Calculates a route.
    */
   calculate(
-    request: RouteRequest,
+    context: RoutePlanningContext,
   ): Promise<Route>;
 
 }
