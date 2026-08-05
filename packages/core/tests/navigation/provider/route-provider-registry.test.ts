@@ -1,9 +1,18 @@
 import assert from "node:assert";
-import test from "node:test";
+import test, { beforeEach } from "node:test";
 
 import {
   RouteProviderRegistry,
 } from "../../../src/index.js";
+
+
+beforeEach(
+  () => {
+
+    RouteProviderRegistry.clear();
+
+  },
+);
 
 
 test(
@@ -108,6 +117,95 @@ test(
     assert.equal(
       result,
       provider,
+    );
+
+  },
+);
+
+
+test(
+  "RouteProviderRegistry finds matching provider among multiple providers",
+  () => {
+
+    const offlineProvider = {
+
+      metadata: {
+
+        id: "offline",
+
+        name: "Offline Provider",
+
+        capabilities: {
+
+          offline: true,
+
+          traffic: false,
+
+          modes: [
+            "walking",
+          ],
+
+        },
+
+      },
+
+
+      async calculate() {
+        return {} as never;
+      },
+
+    };
+
+
+    const drivingProvider = {
+
+      metadata: {
+
+        id: "driving",
+
+        name: "Driving Provider",
+
+        capabilities: {
+
+          offline: false,
+
+          traffic: true,
+
+          modes: [
+            "driving",
+          ],
+
+        },
+
+      },
+
+
+      async calculate() {
+        return {} as never;
+      },
+
+    };
+
+
+    RouteProviderRegistry.register(
+      offlineProvider,
+    );
+
+
+    RouteProviderRegistry.register(
+      drivingProvider,
+    );
+
+
+    const result =
+      RouteProviderRegistry.find({
+        mode: "driving",
+      });
+
+
+    assert.equal(
+      result,
+      drivingProvider,
     );
 
   },

@@ -12,8 +12,8 @@ import type {
  */
 export class RouteProviderRegistry {
 
-  private static provider?:
-    RouteProvider;
+  private static providers:
+    RouteProvider[] = [];
 
 
   /**
@@ -23,8 +23,9 @@ export class RouteProviderRegistry {
     provider: RouteProvider,
   ): void {
 
-    RouteProviderRegistry.provider =
-      provider;
+    RouteProviderRegistry.providers.push(
+      provider,
+    );
 
   }
 
@@ -35,8 +36,12 @@ export class RouteProviderRegistry {
   static get():
     RouteProvider {
 
+    const provider =
+      RouteProviderRegistry.providers[0];
+
+
     if (
-      !RouteProviderRegistry.provider
+      !provider
     ) {
 
       throw new Error(
@@ -45,7 +50,8 @@ export class RouteProviderRegistry {
 
     }
 
-    return RouteProviderRegistry.provider;
+
+    return provider;
 
   }
 
@@ -59,56 +65,61 @@ export class RouteProviderRegistry {
   ):
     RouteProvider | undefined {
 
-    const provider =
-      RouteProviderRegistry.provider;
+
+    return RouteProviderRegistry.providers
+      .find(
+        (provider) => {
+
+          const capabilities =
+            provider.metadata.capabilities;
 
 
-    if (
-      !provider
-    ) {
+          if (
+            query.offline !== undefined &&
+            capabilities.offline !== query.offline
+          ) {
 
-      return undefined;
+            return false;
 
-    }
-
-
-    const capabilities =
-      provider.metadata.capabilities;
+          }
 
 
-    if (
-      query.offline !== undefined &&
-      capabilities.offline !== query.offline
-    ) {
+          if (
+            query.traffic !== undefined &&
+            capabilities.traffic !== query.traffic
+          ) {
 
-      return undefined;
+            return false;
 
-    }
-
-
-    if (
-      query.traffic !== undefined &&
-      capabilities.traffic !== query.traffic
-    ) {
-
-      return undefined;
-
-    }
+          }
 
 
-    if (
-      query.mode &&
-      !capabilities.modes.includes(
-        query.mode,
-      )
-    ) {
+          if (
+            query.mode &&
+            !capabilities.modes.includes(
+              query.mode,
+            )
+          ) {
 
-      return undefined;
+            return false;
 
-    }
+          }
 
 
-    return provider;
+          return true;
+
+        },
+      );
+
+  }
+
+
+  /**
+   * Clears all registered providers.
+   */
+  static clear(): void {
+
+    RouteProviderRegistry.providers = [];
 
   }
 
