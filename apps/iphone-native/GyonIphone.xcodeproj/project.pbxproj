@@ -149,7 +149,7 @@
         ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
         CODE_SIGN_STYLE = Automatic;
         DEVELOPMENT_TEAM = "";
-        CODE_SIGN_ENTITLEMENTS = "GyonIphone/GyonIphone.entitlements";
+        CODE_SIGN_ENTITLEMENTS = "GyonIphone.entitlements";
         IPHONEOS_DEPLOYMENT_TARGET = 16.0;
         LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
         PRODUCT_BUNDLE_IDENTIFIER = "com.gyon.iphone";
@@ -166,7 +166,7 @@
         ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
         CODE_SIGN_STYLE = Automatic;
         DEVELOPMENT_TEAM = "";
-        CODE_SIGN_ENTITLEMENTS = "GyonIphone/GyonIphone.entitlements";
+        CODE_SIGN_ENTITLEMENTS = "GyonIphone.entitlements";
         IPHONEOS_DEPLOYMENT_TARGET = 16.0;
         LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
         PRODUCT_BUNDLE_IDENTIFIER = "com.gyon.iphone";
