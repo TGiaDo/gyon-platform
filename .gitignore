@@ -21,3 +21,11 @@ Thumbs.db
 .vscode/*
 !.vscode/extensions.json
 !.vscode/settings.json
+
+# Xcode
+**/xcuserdata/
+**/*.xcuserstate
+**/project.xcworkspace/
+
+# Backup
+*-backup/
