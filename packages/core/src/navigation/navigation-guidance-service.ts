@@ -1,6 +1,11 @@
 import type {
+  NavigationGuidanceEvent,
   NavigationInstruction,
 } from "@gyon/contracts";
+
+import {
+  NavigationEventStream,
+} from "./navigation-event-stream.js";
 
 import {
   NavigationSession,
@@ -25,11 +30,25 @@ export class NavigationGuidanceService {
   private readonly instructionEngine =
     new InstructionEngine();
 
+  private readonly events =
+    new NavigationEventStream();
+
   constructor(
     private readonly tracker: LocationTracker,
     private readonly matcher: PositionMatcher,
     private readonly session: NavigationSession,
   ) {}
+
+  /**
+   * Subscribes to navigation guidance events.
+   */
+  onEvent(
+    listener: (
+      event: NavigationGuidanceEvent,
+    ) => void,
+  ): () => void {
+    return this.events.subscribe(listener);
+  }
 
   /**
    * Updates guidance state from current location.
@@ -59,9 +78,17 @@ export class NavigationGuidanceService {
       step.id,
     );
 
-    return this.instructionEngine.create(
-      step,
-    );
+    const instruction =
+      this.instructionEngine.create(
+        step,
+      );
+
+    this.events.emit({
+      type: "instruction",
+      instruction,
+    });
+
+    return instruction;
   }
 
   /**
