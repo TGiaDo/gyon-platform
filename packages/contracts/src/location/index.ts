@@ -1,1 +1,6 @@
+export * from "./bearing.js";
 export * from "./coordinate.js";
+export * from "./distance.js";
+export * from "./duration.js";
+export * from "./heading.js";
+export * from "./speed.js";
