@@ -18,6 +18,40 @@ test(
       true,
     );
 
+
+    assert.ok(
+      PlatformRuntime.getContainer(),
+    );
+
+  },
+);
+
+
+
+test(
+  "PlatformRuntime exposes platform container",
+  () => {
+
+    const container =
+      PlatformRuntime.getContainer();
+
+
+    assert.ok(
+      container,
+    );
+
+
+    assert.equal(
+      typeof container.register,
+      "function",
+    );
+
+
+    assert.equal(
+      typeof container.get,
+      "function",
+    );
+
   },
 );
 
