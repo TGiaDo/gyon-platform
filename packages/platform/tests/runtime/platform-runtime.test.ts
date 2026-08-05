@@ -59,6 +59,36 @@ test(
 
 
 test(
+  "PlatformRuntime registers navigation service",
+  () => {
+
+    PlatformRuntime.initialize();
+
+
+    const navigation =
+      PlatformRuntime
+        .getContainer()
+        .get(
+          PlatformServices.NAVIGATION,
+        );
+
+
+    assert.ok(
+      navigation,
+    );
+
+
+    assert.equal(
+      typeof (navigation as any).start,
+      "function",
+    );
+
+  },
+);
+
+
+
+test(
   "PlatformRuntime initialization is idempotent",
   () => {
 

@@ -6,6 +6,9 @@ export const PlatformServices = {
   LOCATION:
     "location",
 
+  NAVIGATION:
+    "navigation",
+
 } as const;
 
 
