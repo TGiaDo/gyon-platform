@@ -7,3 +7,4 @@ export * from "./instruction-engine.js";
 export * from "./navigation-guidance-service.js";
 export * from "./navigation-event-stream.js";
 export * from "./navigation-runtime.js";
+export * from "./navigation-platform-runtime.js";
