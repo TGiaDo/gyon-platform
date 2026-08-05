@@ -11,8 +11,8 @@ import {
 } from "../location/provider/location-runtime-factory.js";
 
 import {
-  NavigationRuntimeFactory,
-} from "../navigation/runtime/navigation-runtime-factory.js";
+  DeviceNavigationRuntimeFactory,
+} from "../navigation/runtime/device-navigation-runtime-factory.js";
 
 import {
   PlatformServices,
@@ -69,7 +69,7 @@ export class PlatformRuntime {
 
 
     const navigationRuntime =
-      NavigationRuntimeFactory.create(
+      DeviceNavigationRuntimeFactory.create(
         "simulator",
       );
 
