@@ -15,6 +15,12 @@ test(
 
     RouteProviderRegistry.register({
 
+      metadata: {
+        id: "test",
+        name: "Test Provider",
+      },
+
+
       async calculate(
         context,
       ) {

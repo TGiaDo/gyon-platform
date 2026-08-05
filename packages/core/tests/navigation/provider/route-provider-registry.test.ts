@@ -11,9 +11,17 @@ test(
   () => {
 
     const provider = {
+
+      metadata: {
+        id: "test",
+        name: "Test Provider",
+      },
+
+
       async calculate() {
         return {} as never;
       },
+
     };
 
     RouteProviderRegistry.register(
@@ -23,6 +31,13 @@ test(
     assert.equal(
       RouteProviderRegistry.get(),
       provider,
+    );
+
+
+    assert.equal(
+      RouteProviderRegistry.get()
+        ?.metadata.id,
+      "test",
     );
 
   },

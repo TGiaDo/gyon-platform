@@ -6,6 +6,10 @@ import type {
   RoutePlanningContext,
 } from "../model/index.js";
 
+import type {
+  RouteProviderMetadata,
+} from "./model/index.js";
+
 
 /**
  * Route calculation provider.
@@ -18,6 +22,13 @@ import type {
  * - Google
  */
 export interface RouteProvider {
+
+  /**
+   * Provider metadata.
+   */
+  metadata:
+    RouteProviderMetadata;
+
 
   /**
    * Calculates a route.
