@@ -1,4 +1,5 @@
 import type {
+  NavigationEvent,
   NavigationProgress,
   NavigationState,
   Route,
@@ -12,9 +13,22 @@ export class NavigationSession {
 
   private currentStepIndex = 0;
 
+  private listeners = new Set<
+    (event: NavigationEvent) => void
+  >();
+
   constructor(
     private readonly route: Route,
   ) {}
+
+  /**
+   * Emits navigation event.
+   */
+  private emit(event: NavigationEvent): void {
+    for (const listener of this.listeners) {
+      listener(event);
+    }
+  }
 
   /**
    * Starts navigation.
@@ -25,6 +39,7 @@ export class NavigationSession {
     }
 
     this.state = "started";
+    this.emit("started");
   }
 
   /**
@@ -38,6 +53,7 @@ export class NavigationSession {
     }
 
     this.state = "navigating";
+    this.emit("activated");
   }
 
   /**
@@ -51,6 +67,7 @@ export class NavigationSession {
     }
 
     this.state = "arrived";
+    this.emit("arrived");
   }
 
   /**
@@ -58,6 +75,20 @@ export class NavigationSession {
    */
   cancel(): void {
     this.state = "cancelled";
+    this.emit("cancelled");
+  }
+
+  /**
+   * Subscribes to navigation events.
+   */
+  onEvent(
+    listener: (event: NavigationEvent) => void,
+  ): () => void {
+    this.listeners.add(listener);
+
+    return () => {
+      this.listeners.delete(listener);
+    };
   }
 
   /**
@@ -85,6 +116,7 @@ export class NavigationSession {
     }
 
     this.currentStepIndex += 1;
+    this.emit("step-changed");
   }
 
   /**
