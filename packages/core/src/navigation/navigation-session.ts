@@ -75,6 +75,19 @@ export class NavigationSession {
   }
 
   /**
+   * Advances navigation to the next route step.
+   */
+  advanceStep(): void {
+    const steps = this.route.legs[0]?.steps ?? [];
+
+    if (this.currentStepIndex >= steps.length - 1) {
+      throw new Error("No next route step");
+    }
+
+    this.currentStepIndex += 1;
+  }
+
+  /**
    * Returns current progress.
    */
   getProgress(): NavigationProgress {
