@@ -1,10 +1,6 @@
 import {
-  NavigationRuntimeFactory,
-} from "../../navigation/runtime/navigation-runtime-factory.js";
-
-import {
-  DeviceNavigationRuntime,
-} from "../../navigation/device-navigation-runtime.js";
+  HuaweiDeviceRuntime,
+} from "../huawei/runtime/huawei-device-runtime.js";
 
 import type {
   LocationProviderType,
@@ -28,27 +24,20 @@ export class DeviceRuntimeFactory {
 
   static create(
     device: DeviceRuntimeType,
+
     provider:
       LocationProviderType,
-  ): DeviceNavigationRuntime {
+  ): HuaweiDeviceRuntime {
 
 
     switch (device) {
 
 
-      case "huawei-watch": {
+      case "huawei-watch":
 
-        const navigationRuntime =
-          NavigationRuntimeFactory.create(
-            provider,
-          );
-
-
-        return new DeviceNavigationRuntime(
-          navigationRuntime as any,
+        return new HuaweiDeviceRuntime(
+          provider,
         );
-
-      }
 
 
       default:

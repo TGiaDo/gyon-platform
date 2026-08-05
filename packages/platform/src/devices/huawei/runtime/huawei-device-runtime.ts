@@ -3,16 +3,23 @@ import type {
 } from "@gyon/contracts";
 
 import {
+  LocationRuntimeFactory,
+} from "../../../location/provider/location-runtime-factory.js";
+
+import {
   NavigationRuntimeFactory,
 } from "../../../navigation/runtime/navigation-runtime-factory.js";
 
 import {
-  WatchNavigationRuntime,
-} from "@gyon/core";
-
-import {
   DeviceNavigationRuntime,
 } from "../../../navigation/device-navigation-runtime.js";
+
+import {
+  WatchNavigationRuntime,
+  LocationTracker,
+  NavigationRuntimeAutoUpdater,
+  NavigationSessionController,
+} from "@gyon/core";
 
 import type {
   LocationProviderType,
@@ -26,10 +33,8 @@ import type {
  */
 export class HuaweiDeviceRuntime {
 
-
   private readonly runtime:
     DeviceNavigationRuntime;
-
 
 
   constructor(
@@ -37,15 +42,42 @@ export class HuaweiDeviceRuntime {
       LocationProviderType = "huawei",
   ) {
 
-    const navigation =
+    const locationService =
+      LocationRuntimeFactory.create(
+        provider,
+      );
+
+
+    const navigationRuntime =
       NavigationRuntimeFactory.create(
         provider,
       );
 
 
+    const tracker =
+      new LocationTracker(
+        locationService,
+      );
+
+
+    const updater =
+      new NavigationRuntimeAutoUpdater(
+        tracker,
+        navigationRuntime,
+      );
+
+
+    const controller =
+      new NavigationSessionController(
+        navigationRuntime,
+        tracker,
+        updater,
+      );
+
+
     const watchRuntime =
       new WatchNavigationRuntime(
-        navigation as any,
+        controller,
       );
 
 
@@ -57,9 +89,6 @@ export class HuaweiDeviceRuntime {
 
 
 
-  /**
-   * Starts navigation.
-   */
   start(
     route: Route,
   ): void {
@@ -72,9 +101,6 @@ export class HuaweiDeviceRuntime {
 
 
 
-  /**
-   * Stops navigation.
-   */
   stop(): void {
 
     this.runtime.stop();
@@ -83,9 +109,6 @@ export class HuaweiDeviceRuntime {
 
 
 
-  /**
-   * Pauses navigation.
-   */
   pause(): void {
 
     this.runtime.pause();
@@ -94,9 +117,6 @@ export class HuaweiDeviceRuntime {
 
 
 
-  /**
-   * Resumes navigation.
-   */
   resume(): void {
 
     this.runtime.resume();
@@ -104,9 +124,7 @@ export class HuaweiDeviceRuntime {
   }
 
 
-  /**
-   * Returns session.
-   */
+
   getSession() {
 
     return this.runtime.getSession();
